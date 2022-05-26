@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-3.4.1/css/bootstrap.min.css' ) }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-3.4.1/css/style.css') }}">
+</head>
+<body>
+
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body text-center">
+                            {% for category, message in messages %}
+                                <h3 class="{{ category }}" style="font-family: 'Cascadia Code';">{{ message }}</h3>
+                            {% endfor %}
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-inverse main-color">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('index') }}">USTACKY</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li {% block index_active %}{% endblock %}><a class="barLink" href="{{ url_for('index') }}">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li {% block dashboard_active %}{% endblock %} ><a class="barLink" href="{{ url_for('dashboard') }}">Get Started</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+
+    <!-- Body Content -->
+    <div class="container-fluid" style="margin-bottom: 100px;">
+        {% block content %}{% endblock %}
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer monospace main-color">
+        <div class="container">
+            <p class="footer-text">All Rights Reserved &copy;Ustacky 2022.</p>
+        </div>
+    </footer>
+
+
+    <!-- Javascript Links -->
+    <script src="{{ url_for('static', filename='bootstrap-3.4.1/js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap-3.4.1/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap-3.4.1/js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap-3.4.1/js/script-jquery.js') }}"></script>
+</body>
+</html>

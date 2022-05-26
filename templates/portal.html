@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+<!-- Window Title -->
+{% block title %}
+    <title>Portal - Portal</title>
+{% endblock %}
+
+{% block index_active %}
+    class="active"
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="portal_form_page" id="portal_form_page">
+        <div class="portal_title_header">
+            <div class="text-center form_logo_text">
+                <h2>Student Portal Form</h2>
+            </div>
+        </div>
+        <p class="notice_text">Please fill in all required information</p>
+        <div class="portal_form_section_1_header section_header">
+            <h4>Personal Information</h4>
+        </div>
+        <!-- <form action="javascript:0" id="imageform" method="post" enctype="multipart/form-data">
+            <div class="col-md-5" style="margin: 17px 0 0 21px;">
+                <label for="uploadImage">Upload Image</label>
+                <input class="form-control" id="image" type="file" accept="image/*" required>
+            </div>
+        </form> -->
+        <form class="portal_student_form" action="javascript:0" method="post" id="portal_student_form">
+            {{ form.csrf_token }}
+            <div class="student_form" id="student_form">
+                <div class="row form_part_container">
+                    <div class="col-md-5 form_left_side form_part">
+                        <!-- <div class="col-md-5" style="margin: 17px 0 0 21px;"> -->
+                        <div class="form-group">
+                            <label for="uploadImage">Upload Image</label>
+                            <input class="form-control" id="image" type="file" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label for="firstname">First Name</label>
+                            <input class="form-control" id="firstname" type="text" pattern="[A-Za-z]{3-14}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Lastname</label>
+                            <input class="form-control" id="lastname" type="text" pattern="[A-Za-z]{3-14}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="DOB">Date of Birth</label>
+                            <input class="form-control" type="date" id="dateofbirth" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phonenumber">Phone Number</label>
+                            <input class="form-control" type="tel" name="" id="phonenumber" placeholder="eg: 09010000000" required>
+                            <span for="phonenumberError" class="formError" id="phonenumberError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="stateoforigin">State of Origin</label>
+                            {{ form.state(class="form-control") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="nextofkin">Next Of Kin</label>
+                            <input class="form-control" type="text" id="nextofkin" placeholder="Enter the name of Next of Kin" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form_right_side form_part" style="margin-top: 5px;">
+                        <div class="form-group">
+                            <label for="hidden"></label>
+                            <input class="form-control" type="text" hidden style="visibility: hidden;" name="" id="">
+                        </div>
+                        <div class="form-group">
+                            <label for="middlename">Middle Name</label>
+                            <input class="form-control" type="text" id="middlename" pattern="[A-Za-z]{3-14}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input class="form-control" type="email" placeholder="Enter Email..." id="emailaddress" required>
+                        </div>
+                        <div class="form-group" style="border: none !important;">
+                            <label for="gender">Gender</label>
+                            <div class="form-control">
+                                <span>
+                                    <label for="male">Male</label>
+                                    <input type="radio" id="male" name="gender" value="male">
+                                    <label for="female">Female</label>
+                                    <input type="radio" id="female" name="gender" value="female">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 8px;">
+                            <label for="address">Address</label>
+                            <!-- <input class="form-control" id="address" type="text" required> -->
+                            <textarea name="address" id="address" cols="30" rows="2" class="form-control" placeholder="Enter Address..." required></textarea>
+                        </div>
+                        <div class="form-group" id="div_lgaoforigin">
+                            <label for="Local Government">Local Government</label>
+                            {{ form.local(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portal_form_section_1_header section_header">
+                <h4>Academics Related Information</h4>
+            </div>
+            <div class="student_form" id="student_form">
+                <div class="row form_part_container">
+                    <div class="col-md-5 form_left_side form_part">
+                        <div>
+                            <label for="jambScoreEntry">Jamb Score</label>
+                            <input class="form-control" type="text" name="jambscore" id="jambscore" placeholder="Enter Jamb Score" required>
+                            <span for="jambscoreError" class="formError" id="jambscoreError"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form_right_side form_part">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-default portal_form_submit_btn" id="portal_form_submit_btn" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // let country_select = document.getElementById('country');
+    let state_select = document.getElementById('state');
+    let local_select = document.getElementById('local');
+
+    state_select.onchange = function() {
+        let state = state_select.value;
+        // alert(state);
+        fetch('/local/' + state).then(function(response) {
+            response.json().then(function(data) {
+                let optionHTML = '';
+                for (local of data.statelocal) {
+                    optionHTML += '<option value="' + local.name + '">' + local.name + '</option>'
+                }
+                local_select.innerHTML = optionHTML;
+            });
+        });
+    };
+
+</script>
+
+{% endblock %}

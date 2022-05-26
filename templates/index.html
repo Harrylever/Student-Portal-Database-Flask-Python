@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+<!-- Window Title -->
+{% block title %}
+    <title>Portal - Home</title>
+{% endblock %}
+
+{% block index_active %}
+    class="active"
+{% endblock %}
+
+{% block content %}
+    <div class="row landing-page">
+        <div class="col-md-6 border lpage-left-side">
+            <h2>Student Main Portal</h2>
+            <div>
+                <p>Ustacky Student Portal registration, join us today <br> for your online courses</p>
+            </div>
+            <button class="btn btn-primary"><a href="{{ url_for('portal_form') }}">Get Started</a></button>
+        </div>
+
+        <div class="col-md-6 border lpage-right-side">
+            <div class="lpage-right-side-div">
+                <img src="{{ url_for('static', filename='images/homepage.svg') }}" width="70%" alt="">
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: Quicksand, sans-serif;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+.main-color {
+    background-color: #34325e !important;
+}
+.barLink {
+    font-weight: 500;
+}
+.navbar-brand {
+    font-weight: 900;
+    font-size: 22px;
+}
+.container-fluid > .row {
+    padding: 55px 50px 0 100px;
+}
+.lpage-left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    height: 50vh;
+}
+.lpage-left-side h2 {
+    color: #34325e;
+    font-size: 48px;
+    font-weight: 800;
+}
+.lpage-left-side div {
+    padding: 5px 0 10px 0;
+}
+.lpage-left-side div p {
+    color: #c8a241;
+    font-size: 20px;
+    font-weight: 600;
+}
+.lpage-left-side button {
+    width: 120px;
+    padding: 10px 6px;
+    font-weight: 600;
+    font-size: 13px;
+    background-color: #34325e;
+    outline: none !important;
+    border: none !important;
+}
+.lpage-left-side button a {
+    color: #ebb52c;
+    text-decoration: none;
+}
+.lpage-left-side button:focus, .lpage-left-side button:hover {
+    color: #ebb52c;
+    background-color: #454285;
+    outline: none;
+    border: none;
+}
+.lpage-right-side-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* =========== */
+/* Portal Page */
+
+.portal_form_page {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    justify-items: center;
+    background-color: rgba(99, 185, 188, 0.8);
+    padding: 30px 20px;
+}
+.section_header {
+    display: flex;
+    border-radius: 4px;
+    background-color: gray;
+    padding: 0px 15px;
+    height: 35px;
+    align-items: center;
+}
+.section_header h4 {
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+}
+.notice_text {
+    color: rgb(161, 84, 58);
+    font-style: italic;
+    margin: 0;
+}
+.student_form {
+    margin: 20px 0;
+}
+.form_part_container {
+    display: flex;
+    justify-content: space-around;
+}
+.portal_form_submit_btn {
+    padding: 7px 120px;
+    border: none;
+    border-radius: 6px;
+    background-color: #34325e;
+    color: white;
+    outline: none;
+}
+.portal_form_submit_btn:hover, .portal_form_submit_btn:active, .portal_form_submit_btn:focus {
+    background-color: #34325e !important;
+    color: white;
+    font-weight: 800;
+    outline: none !important;
+}
+.portal_student_form input {
+    margin: 0 0 12px 0;
+}
+.image_container_details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+}
+.image_container {
+    border-radius: 14px;
+    border: 2px solid rgba(48, 19, 19, 0.7);
+    height: 54%;
+    width: 70%;
+}
+
+
+
+.footer {
+    
+    position: fixed;
+    bottom: 0;
+    padding: 18px 0;
+    text-align: center;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    background-color: #f5f5f5;
+}
+
+.footer-text {
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+}
+.flash_error {
+    color: rgb(218, 62, 31);
+}
+.flash_success {
+    color: rgb(23, 184, 23);
+}
+.formError {
+    font-size: 12px;
+    color: rgb(218, 62, 31);
+    font-family: 'Cascadia Code', sans-serif;
+}
+.section_header_student {
+    background-color: #4478df;
+    margin: 0 10px 0 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.section_header_student h3 {
+    color: wheat;
+    padding: 3px 0 3px 17px;
+}
+.info_section {
+    margin: 0 12px;
+}
+.info_section div {
+    border-radius: 7px;
+    line-height: 0;
+    background-color: #4478df8e;
+}
+.info_section div p {
+    padding: 20px 0 9.6px 0;
+}
+.query {
+    margin: 15px 17px 5px 17px;
+}
+.table {
+    margin-top: 10px;
+    border-top: 6px solid #34325edc;
+    border-bottom: 6px solid #34325edc;
+}

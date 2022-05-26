@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+<!-- Window Title -->
+{% block title %}
+    <title>Dashboard</title>
+{% endblock %}
+
+{% block dashboard_active %}
+    class="active"
+{% endblock %}
+
+
+
+{% block content %}
+    <div>
+        <div class="info_section row">
+            <div class="col-md-12">
+                <p class="text-primary"><strong>Info!</strong> All Students records table</p>
+            </div>
+        </div>
+        <div class="query" id="query">
+            <form action="#" method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" placeholder="Search Record by Name Only" id="queryname" name="queryname" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <select name="by_admission_status" id="by_admission_status" class="form-control">
+                            <option value="none">Any Status</option>
+                            <option value="admitted">Admitted</option>
+                            <option value="undecided">Undecided</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <select name="by_gender" id="by_gender" class="form-control">
+                            <option value="none">Both Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="number" name="by_jambscore" id="by_jambscore" class="form-control" min="1" max="400" placeholder="Enter Jamb Score">
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <button type="submit" id="query_search" class="btn btn-primary">search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>S/n</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Jamb Score</th>
+                        <th>Admission Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td class="text-capitalize">{{ student['firstname'] + " " +  student['middlename'] + " " + student['lastname'] }}</td>
+                        <td class="text-capitalize">{{ student['gender'] }}</td>
+                        <td>{{ student['jambscore'] }}</td>
+                        <td class="text-capitalize">{{ student['admis_status'] }}</td>
+                        <td><a href="http://127.0.0.1:5051/admin/students/{{ student['id'] }}"><button type="button" class="btn btn-sm btn-info" id="{{ student['id'] }} show_detail_btn"><i class="bi bi-eye"></i></button></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
